@@ -235,36 +235,28 @@ const interfazContarBase = (base) => {
 };
 
 const inicioSesion = (clave) => {
-    let claves = ['clave1', 'clave2', 'clave3'] ;
-    let intentos = 3;
-
-    switch (clave) {
-        case claves[0]:
-            return `Acceso permitido`;
-                break;
-        case claves[1]:
-            return `Acceso permitido`;
-                break;
-        case claves[2]:
-            return `Acceso permitido`;
-                break;
-        default:
-            return('Clave incorrecta.');
-                break;
-
-            if (intentos >= 4) {
-                console.log('Alerta de intruso: ha realizado los 3 intentos permitidos.');
-            }
-            return 'Clave incorrecta';
+    let contraseñas = ['keyword1','keyword2', 'keyword3'];
+    let intento = 0
+    for (const claves of clave) {
+        intento++ 
+               
+        if (contraseñas.includes(claves)) {
+            console.log(`*`.green +`La contraseña es correcta, acceso permitido.`+ `*`.green)
+            return "";
+        } else {
+            console.log (`*`.green +`La contraseña no es correcta, intento ${intento} de 3`+ `*`.green);
+        }
     }
-};
+    console.log(`*              `.green +"¡Alerta intruso!"+ `             *`.green)
+    return "";
+}
 
 const interfazInicioSesion = (clave) =>{
-    console.log(`******************************************`.green);
-    console.log(`*         `.green     +   `FUNCIÓN BEBIDA COMIDA`.bgGreen +`          *`.green);
-    console.log(`******************************************`.green);
-    console.log(`*        `.green + `${clave}`+ "  " +  functions.inicioSesion(clave) + `       *`.green);
-    console.log(`******************************************\n`.green);
+    console.log(`**********************************************`.green);
+    console.log(`*          `.green     +   `FUNCIÓN INICIO DE SESIÓN`.bgGreen +`          *`.green);
+    console.log(`**********************************************`.green);
+    console.log(`*          `.green + `${clave}`+ "  " +  functions.inicioSesion(clave) + `         *`.green);
+    console.log(`**********************************************\n`.green);
 };
 
 const minimoMaximo = (numeros) => {
@@ -284,14 +276,15 @@ const minimoMaximo = (numeros) => {
     }
     const promedio = suma / numeros.length;
 
-    return (`*   `.gray + `El número mínimo es: ${min}\n` + `    *`.gray+ `El número máximo es: ${max}\n` + `   *`.gray + `El promedio es: ${promedio}`);
+    return (`*`.gray + `El número mínimo es: ${min}` + `     *\n`.gray + `*       `.gray+ `El número máximo es: ${max}`
+    +`      *\n`.gray + `*        `.gray + `El promedio es: ${promedio}` + `         *`.gray);
 };
 
 const interfazMinimoMaximo = (numeros) =>{
     console.log(`***************************************`.gray);
     console.log(`*  `.gray    +   `FUNCIÓN MÍNIMO, MÁXIMO Y PROMEDIO` +`  *`.gray);
     console.log(`***************************************`.gray);
-    console.log(`*    `.gray + `El arreglo es: ${numeros}\n` + "  " +  functions.minimoMaximo(numeros) + `    *`.gray);
+    console.log(`*     `.gray + `El arreglo es: ${numeros}` + `     *  \n `.gray + "  " +  functions.minimoMaximo(numeros));
     console.log(`***************************************\n`.gray);
 };
 
@@ -316,7 +309,7 @@ const interfazNumerosPares2 = (numeros1) => {
     console.log(`********************************************`.blue);
     console.log(`*`.blue + `FUNCIÓN CONTAR NÚMEROS PARES DE UN ARREGLO`.bgBlue + `*`.blue);
     console.log(`********************************************`.blue);
-    console.log(`*       `.blue + `El arreglo es: ${numeros1}\n` + `*       `.blue + `Cantidad de números pares: ${numerosPares2(numeros1).cantidad}` + `       *`.blue);
+    console.log(`*        `.blue + `El arreglo es: ${numeros1}` + `        *\n`.blue + `*       `.blue + `Cantidad de números pares: ${numerosPares2(numeros1).cantidad}` + `       *`.blue);
     console.log(`********************************************\n`.blue);
 };
 

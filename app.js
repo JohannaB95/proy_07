@@ -46,7 +46,7 @@ const main = async ( ) => {
     const base = 20;
     functions.interfazContarBase(base);
 
-    const clave = 'clave7';
+    const clave = ['keywrd1','keywor6', 'keyword3'];
     functions.interfazInicioSesion(clave);
 
     const numeros = [1,2,5,250,62,];
