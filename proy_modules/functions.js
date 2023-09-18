@@ -85,8 +85,11 @@ const facturaProducto = (cantidad, precio, descuento) => {
     if(cantidad <= 0 || precio <= 0 || descuento < 0 || descuento >= 100){
         return 'Valores no válidos'
     }
-    const total = Math.abs(cantidad * precio * descuento / 100 - precio);
-    return total;
+    
+    let total = cantidad * precio;
+    let descuentoAplicado = (total * descuento) / 100;
+    let totalDescuento = total - descuentoAplicado;
+    return totalDescuento;
 };
 
 const interfazFacturaProducto = (cantidad, precio,descuento, total) => {
@@ -219,20 +222,34 @@ const interfazRepetirCaracter = (caracter1,numero4) =>{
 };
 
 const contarBase = (base) => {
-    for(let contador = 10; contador <= base; contador ++) {
-         if(contador >= 10 && contador < 100)
-        console.log(`*                            `.magenta + `${contador}` +`                          *`.magenta);
-        }
-        return ' ';
-    };
-
-const interfazContarBase = (base) => {
-    console.log(`**********************************************************`.magenta);
-    console.log(`*                   `.magenta    +   `FUNCIÓN CONTAR BASE`.bgMagenta +`                  *`.magenta);
-    console.log(`**********************************************************`.magenta);
-    console.log(`*`.magenta + `Estos son los números de dos digitos hasta el número ${base}`+functions.contarBase(base)+`*`.magenta);
-    console.log(`**********************************************************\n`.magenta);
-};
+    if (base < 2) {
+      return 'La base debe ser mayor o igual a 2';
+    }
+  
+    const numeros = [];
+    
+    for (let i = 0; i < base; i++) {
+      for (let j = 0; j < base; j++) {
+        const numero = i.toString(base) + j.toString(base);
+        numeros.push(numero);
+      }
+    }
+    
+    return numeros.join(', ');
+  };
+  
+  const interfazContarBase = (base) => {
+    console.log(`******************************************************************`.magenta);
+    console.log(`*                       `.magenta + `FUNCIÓN CONTAR BASE`.bgMagenta + `                      *`.magenta);
+    console.log(`******************************************************************`.magenta);
+    const numerosBase = contarBase(base);
+    if (typeof numerosBase === 'string') {
+      console.log(`*`.magenta + ` ${numerosBase}` + ` *`.magenta);
+    } else {
+      console.log(`*`.magenta + ` ${numerosBase.join(', ')}` + ` *`.magenta);
+    }
+    console.log(`******************************************************************\n`.magenta);
+  };
 
 const inicioSesion = (clave) => {
     let contraseñas = ['keyword1','keyword2', 'keyword3'];
@@ -261,44 +278,43 @@ const interfazInicioSesion = (clave) =>{
 
 const minimoMaximo = (numeros) => {
 
-    let min = numeros[0]
-    let max = numeros[0]
+    let minimo = numeros[0]
+    let maximo = numeros[0]
     let suma = numeros[0];
 
     for(let i = 0; i<numeros.length; i++){
-        if(min > numeros[i]){
-            min = numeros[i];
+        if(minimo > numeros[i]){
+            minimo = numeros[i];
         }
-        if(max < numeros[i]){
-            max = numeros[i];
+        if(maximo < numeros[i]){
+            maximo = numeros[i];
      }
     suma += numeros[i];
     }
     const promedio = suma / numeros.length;
 
-    return (`*`.gray + `El número mínimo es: ${min}` + `     *\n`.gray + `*       `.gray+ `El número máximo es: ${max}`
-    +`      *\n`.gray + `*        `.gray + `El promedio es: ${promedio}` + `         *`.gray);
+    return (`*       `.gray + `El número mínimo es: ${minimo}` + `     *\n`.gray + `*         `.gray+ `El número máximo es: ${maximo}`
+    +`        *\n`.gray + `*   `.gray + `El promedio es: ${promedio}` + `    *`.gray);
 };
 
 const interfazMinimoMaximo = (numeros) =>{
-    console.log(`***************************************`.gray);
-    console.log(`*  `.gray    +   `FUNCIÓN MÍNIMO, MÁXIMO Y PROMEDIO` +`  *`.gray);
-    console.log(`***************************************`.gray);
-    console.log(`*     `.gray + `El arreglo es: ${numeros}` + `     *  \n `.gray + "  " +  functions.minimoMaximo(numeros));
-    console.log(`***************************************\n`.gray);
+    console.log(`*******************************************`.gray);
+    console.log(`*    `.gray    +   `FUNCIÓN MÍNIMO, MÁXIMO Y PROMEDIO` +`    *`.gray);
+    console.log(`*******************************************`.gray);
+    console.log(`*`.gray + `El arreglo de números es: ${numeros}` + `*  \n `.gray + "  " +  functions.minimoMaximo(numeros));
+    console.log(`*******************************************\n`.gray);
 };
 
 const numerosPares2 = (numeros1) => {
-    const pares = [];
-    let i = 0;
+    const pares = [ ];
+    let c = 0;
     
-    while (i < numeros1.length) {
-        if (numeros1[i] % 2 === 0) {
-            pares.push(numeros1[i]);
+    while (c< numeros1.length) {
+        if (numeros1[c] % 2 === 0) {
+            pares.push(numeros1[c]);
         }
-        i++;
+        c++;
     }
-
     return {
         cantidad: pares.length,
         numerosPares: pares
@@ -306,11 +322,13 @@ const numerosPares2 = (numeros1) => {
 };
 
 const interfazNumerosPares2 = (numeros1) => {
-    console.log(`********************************************`.blue);
-    console.log(`*`.blue + `FUNCIÓN CONTAR NÚMEROS PARES DE UN ARREGLO`.bgBlue + `*`.blue);
-    console.log(`********************************************`.blue);
-    console.log(`*        `.blue + `El arreglo es: ${numeros1}` + `        *\n`.blue + `*       `.blue + `Cantidad de números pares: ${numerosPares2(numeros1).cantidad}` + `       *`.blue);
-    console.log(`********************************************\n`.blue);
+    console.log(`************************************************`.blue);
+    console.log(`*  `.blue + `FUNCIÓN CONTAR NÚMEROS PARES DE UN ARREGLO`.bgBlue + `  *`.blue);
+    console.log(`************************************************`.blue);
+    console.log(`*`.blue + `El arreglo de números es: ${numeros1}` + `*\n`.blue + `*         `.blue + 
+    `Cantidad de números pares: ${numerosPares2(numeros1).cantidad}` + `         *`.blue);
+    console.log(`*   `.blue + `Los números pares son: ${numerosPares2(numeros1).numerosPares.join(', ')}` + `   *`.blue);
+    console.log(`************************************************\n`.blue);
 };
 
 functions.signo = signo;

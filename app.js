@@ -18,9 +18,9 @@ const main = async ( ) => {
     const medio = 'bicicleta'
     functions.interfazMedioTransporte(medio);
 
-    const cantidad = 1;
-    const precio = 500;
-    const descuento = 5;
+    const cantidad = 2;
+    const precio = 2500;
+    const descuento = 10;
     const total = functions.facturaProducto(cantidad, precio, descuento);
     functions.interfazFacturaProducto(cantidad, precio, descuento, total);
 
@@ -43,16 +43,16 @@ const main = async ( ) => {
     const numero4 = 3;
     functions.interfazRepetirCaracter(caracter1, numero4);
 
-    const base = 20;
+    const base = 4;
     functions.interfazContarBase(base);
 
     const clave = ['keywrd1','keywor6', 'keyword3'];
     functions.interfazInicioSesion(clave);
 
-    const numeros = [1,2,5,250,62,];
+    const numeros = [5, 8, 6, 22, 33, 270];
     functions.interfazMinimoMaximo(numeros);
 
-    const numeros1 = [2, 5, 4, 8, 7, 6];
+    const numeros1 = [22, 33, 5, 8, 1, 14, 86, 36];
     functions.interfazNumerosPares2(numeros1)
 
 };
