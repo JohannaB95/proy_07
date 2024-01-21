@@ -1,4 +1,4 @@
-//Se declara un objeto vacío llamado functions.
+//Se declara una variable constante llamada functions que se inicializa como un objeto vacío.
 const functions = {};
 
 //Se declara una función flecha de tipo constante llamada signo con un parámetro numero.
@@ -104,7 +104,7 @@ const medioTransporte = (medio) => {
     /*Se usa un condicional if para crear una condición en la que se específica que si medio es igual a avion o 
     medio es igual a flota*/
     if (medio == 'avion' || medio == "flota") {
-        //Si la condición se cumple, se retornara un mensaje diciendo que recuerde llevar dinero para el pasaje
+        //Si la condición se cumple, se retornara un mensaje diciendo que recuerde tener dinero para el pasaje
         return `Recuerda tener dinero para el pasaje`;
      //Y si medio es igual a carro o medio es igual a bicicleta
     } else if (medio == "carro" || medio == "bicicleta") {
@@ -130,13 +130,13 @@ const facturaProducto = (cantidad, precio, descuento) => {
     a 0 o precio es igual o menor a 0 o descuento es menor a 0 o igual o mayor a 100*/
     if (cantidad <= 0 || precio <= 0 || descuento < 0 || descuento >= 100) {
         //Se retornara un mensaje diciendo que son valores no válidos
-        return 'Valores no válidos'
+        return 'No se puede realizar la operación'
     }
 
     //Se declara una variable llamada total que almacenara el resultado de la multiplicación de la cantidad x precio
     let total = cantidad * precio;
-    /*Se declara una variable llamada descuentoAplicado en la que se almacenara el resultado del total del descuento 
-    que se realizara al valor inicial*/
+    /*Se declara una variable llamada descuentoAplicado en la que se almacenara el resultado del total del 
+    descuento que se realizara al valor inicial*/
     let descuentoAplicado = (total * descuento) / 100;
     /*Se declara una variable llamada totalDescuento que almacenara el resultado de la operación de restar 
     del precio total el valor del descuento*/
@@ -145,7 +145,8 @@ const facturaProducto = (cantidad, precio, descuento) => {
     return totalDescuento;
 };
 
-//Se declara una función flecha de tipo constante llamada interfazFacturaProducto con parámetros cantidad, precio, descuento, total.
+/*Se declara una función flecha de tipo constante llamada interfazFacturaProducto con parámetros cantidad, 
+precio, descuento, total.*/
 const interfazFacturaProducto = (cantidad, precio, descuento, total) => {
     /*Se imprime en la consola una interfaz con un título que además muestra los valores de cada uno de los
     parámetros dados a la función*/
@@ -228,7 +229,7 @@ const salaJuegos = (pago) => {
             return "Accede solo a las consolas";
             //Se usa break para salir del caso 1000
             break;
-        //Si el dinero pagado no es suficiente
+        //Si el dinero pagado no es suficiente o es una cantidad diferente a la de los casos anteriores
         default:
             //Se retorna un mensaje que indica que se debe pagar más para poder acceder a los juegos
             return "Debe ingresar más dinero para acceder a los juegos.";
@@ -248,12 +249,12 @@ const interfazSalaJuegos = (pago) => {
     console.log(`************************************************************************************\n`.gray);
 };
 
-//Se declara una función flecha de tipo constante llamada salaJuegos con un parámetro pago.
+//Se declara una función flecha de tipo constante llamada contarNumero con un parámetro numero1.
 const contarNumero = (numero1) => {
     //Se declara una variable llamada contador y que se inicializa en 0.
     let contador = 0;
 
-    //Se usa while y se le da una condición que indica que el bucle se ejecutara mientras contador sea menor o igual a numero1
+    //Se usa while con una condición que indica que el bucle se ejecutara mientras contador sea menor o igual a numero1
     while (contador <= numero1) {
         //Contador aumentara en cada iteración 1
         contador++;
@@ -288,6 +289,7 @@ const numerosPares = (numero2) => {
             //Se imprime en la consola un mensaje con los números pares
             console.log(`*                    `.red + `${contador}` + `                  *`.red);
     }
+    //Se retorna un string vacío
     return ' ';
 };
 
@@ -366,7 +368,7 @@ const contarBase = (base) => {
 
     /*Se utiliza un ciclo for en el que se declara una variable llamada i que se inicializa en 0, que tiene como 
     condición que se ejecutara mientras i sea menor a base y que i irá aumentando de a 1 en cada iteración.
-     Este bucle controla la posición del primer dígito en los números generados.*/
+    Este bucle controla la posición del primer dígito en los números generados.*/
     for (let i = 0; i < base; i++) {
         /*Se utiliza un ciclo for en el que se declara una variable llamada j que se inicializa en 0, que tiene como 
         condición que se ejecutara mientras j sea menor a base y que j irá aumentando de a 1 en cada iteración.
@@ -569,6 +571,6 @@ functions.interfazMinimoMaximo = interfazMinimoMaximo;
 functions.numerosPares2 = numerosPares2;
 functions.interfazNumerosPares2 = interfazNumerosPares2;
 
-/*Todas las funciones mencionadas se exportan bajo el objeto functions. Esto significa que, cuando importas 
-este módulo en otro archivo, puedes acceder a estas funciones a través de functions.nombreDeLaFuncion. */
+/*Todas las funciones mencionadas se exportan bajo el objeto functions. Esto significa que, cuando se importa
+este módulo en otro archivo, se puede acceder a estas funciones a través de functions.nombreDeLaFuncion. */
 module.exports = functions;

@@ -1,10 +1,11 @@
 //Se carga la libreria colors para permitir el uso de estilos de colores en la terminal
 require('colors');
 
-//Se carga el código que contiene el archivo functions.js en la carpeta proy_modules
+/*Se declara una constante llamada functions que almacena y carga el código que contiene el archivo 
+functions.js en la carpeta proy_modules*/
 const functions = require('./proy_modules/functions.js')
 
-//Se declara una función flecha main asincrónica 
+//Se declara una función flecha constante llamada main que es asincrónica 
 const main = async ( ) => {
 
    //Se limpia la consola
